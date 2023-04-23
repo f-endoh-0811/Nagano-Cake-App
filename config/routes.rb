@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   scope module: :admin do
-    get 'admin' => 'homes#top'
+    get 'admin' => 'homes#top', as: 'admin'
   end
   
   scope module: :public do

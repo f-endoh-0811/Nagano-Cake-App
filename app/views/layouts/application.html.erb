@@ -11,6 +11,78 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <div>
+          <!--ロゴ-->
+          
+          <!--メニュー-->
+          <div>
+            <ul>
+            <% if admin_signed_in? %>
+              <% if request.fullpath.include? "/admin" %>
+                <li>
+                  <%= link_to "商品一覧", admin_path %> <!--各モデル作成後正しいリンクを記述-->
+                </li>
+                <li>
+                  <%= link_to "会員一覧", admin_path %> <!--各モデル作成後正しいリンクを記述-->
+                </li>
+                <li>
+                  <%= link_to "注文履歴一覧", admin_path %>
+                </li>
+                <li>
+                  <%=　link_to "ジャンル一覧", admin_path %> <!--各モデル作成後正しいリンクを記述-->
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "マイページ", root_path %> <!--各モデル作成後正しいリンクを記述-->
+                </li>
+                <li>
+                  <%= link_to "商品一覧", root_path %> <!--各モデル作成後正しいリンクを記述-->
+                </li>
+                <li>
+                  <%= link_to "カート", root_path %> <!--各モデル作成後正しいリンクを記述-->
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+                </li>
+              <% end %>
+            <% elsif customer_signed_in? %>
+              <li>
+                <%= link_to "マイページ", root_path %> <!--各モデル作成後正しいリンクを記述-->
+              </li>
+              <li>
+                <%= link_to "商品一覧", root_path %> <!--各モデル作成後正しいリンクを記述-->
+              </li>
+              <li>
+                <%= link_to "カート", root_path %> <!--各モデル作成後正しいリンクを記述-->
+              </li>
+              <li>
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "About", about_path %>
+              </li>
+              <li>
+                <%= link_to "商品一覧", root_path %> <!--各モデル作成後正しいリンクを記述-->
+              </li>
+              <li>
+                <%= link_to "新規登録", new_customer_registration_path %>
+              </li>
+              <li>
+                <%= link_to "ログイン", new_customer_session_path %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
     <%= yield %>
   </body>
 </html>
