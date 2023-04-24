@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -38,7 +38,7 @@
                 </li>
               <% else %>
                 <li>
-                  <%= link_to "マイページ", customers_path %> <!--各モデル作成後正しいリンクを記述-->
+                  <%= link_to "マイページ", customers_path %>
                 </li>
                 <li>
                   <%= link_to "商品一覧", root_path %> <!--各モデル作成後正しいリンクを記述-->
@@ -52,7 +52,7 @@
               <% end %>
             <% elsif customer_signed_in? %>
               <li>
-                <%= link_to "マイページ", customers_path %> <!--各モデル作成後正しいリンクを記述-->
+                <%= link_to "マイページ", customers_path %>
               </li>
               <li>
                 <%= link_to "商品一覧", root_path %> <!--各モデル作成後正しいリンクを記述-->
@@ -84,5 +84,9 @@
     </header>
     
     <%= yield %>
+    
+    <footer>
+      
+    </footer>
   </body>
 </html>
