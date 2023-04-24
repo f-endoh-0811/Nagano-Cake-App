@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     get 'customers' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/hide' => 'customers#hide'
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
