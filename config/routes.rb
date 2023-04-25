@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   scope module: :admin do
     get 'admin' => 'homes#top', as: 'admin'
-    resources :genres, only: [:index, :edit, :new, :create, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
   end
   
   scope module: :public do
