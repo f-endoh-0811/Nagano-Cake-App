@@ -10,8 +10,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
+  <body class="mx-auto" style="width: 95%;">
+    <header class="border-dark border mt-lg-3">
       <nav class="nav navbar-expand-sm navbar-light mt-3 mb-3">
         <h1>LOGO</h1>
           
@@ -80,10 +80,11 @@
       </nav>
     </header>
     
-    <%= yield %>
-    
+    <main class="border-dark border-right border-left py-lg-5">
+      <%= yield %>
+    </main>
     <footer>
-      
+      <div class="border-dark border mb-lg-3" style="height: 130px;"></div>
     </footer>
   </body>
 </html>

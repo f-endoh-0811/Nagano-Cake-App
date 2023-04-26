@@ -22,7 +22,7 @@
         </thead>
     
         <tbody>
-          <div class="field">
+          <div class="form-group">
             <tr>
               <th scope="row">
                 名前
@@ -42,7 +42,7 @@
             </tr>
           </div>
   
-          <div class="field">
+          <div class="form-group">
             <tr>
               <th scope="row">フリガナ</th>
               <td scope="row">
@@ -59,7 +59,7 @@
             </tr>
           </div>
 
-            <div class="field">
+            <div class="form-group">
             <tr>
               <th scope="row">メールアドレス</th>
               <td scope="row"></td>
@@ -69,7 +69,7 @@
             </tr>
           </div>
   
-          <div class="field">
+          <div class="form-group">
             <tr>
               <th scope="row">郵便番号(ハイフンなし)</th>
               <td scope="row"></td>
@@ -79,17 +79,17 @@
             </tr>
           </div>
   
-          <div class="field">
+          <div class="form-group">
             <tr>
               <th scope="row">住所</th>
               <td scope="row"></td>
               <td>
-                <%= f.text_field :address, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0" %>
+                <%= f.text_field :address, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0", class: "form-text" %>
               </td>
             </tr>
           </div>
   
-          <div class="field">
+          <div class="form-group">
             <tr>
               <th scope="row">電話番号(ハイフンなし)</th>
               <td scope="row"></td>
@@ -99,7 +99,7 @@
             </tr>
           </div>
 
-          <div class="field">
+          <div class="form-group">
             <tr>
               <th scope="row">
                 <% if @minimum_password_length %>
@@ -113,7 +113,7 @@
             </tr>
           </div>
 
-          <div class="field">
+          <div class="form-group">
             <tr>
               <th scope="row">パスワード(確認用)</th>
               <td scope="row"></td>
@@ -127,7 +127,7 @@
             <th scope="row"></th>
             <td scope="row"></td>
             <td>
-              <%= f.submit "新規登録" %>
+              <%= f.submit "新規登録", class: "btn btn-success" %>
             </td>
           </div>
         </tbody>

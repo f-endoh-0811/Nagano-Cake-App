@@ -1,26 +1,45 @@
 <div class="container"> 
   <div class="row">
-    <div class="col-lg-4">
-      <h2>ジャンル検索</h2>
-    <!--ジャンル検索用のサイトバー-->
+    <div class="col-lg-2 mr-lg-5">
+      <table class="table table-sm table-borderless border-dark border" style="height: 100%;">
+        <thead class="text-center border-dark border-bottom">
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+        </thead>
+        <% @genres.each do |genre| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= genre.name %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
     </div>
 
-    <div class="col-lg-8" style="background-color: #eee">
-      <p>
-        ようこそ、ながのCAKEへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要となります。
-      </p>
+    <div class="col-lg-9" style="background-color: #eee">
+      <div class="mx-auto border-dark border" style="width: 60%; height: 70%">
+        <p class="text-left py-lg-3">
+          ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要となります。
+        </p>
+      </div>
     </div>
   </div>
 
-  <div class="col-lg-8">
-    <h2>新着商品</h2>
-    <table>
-    <!--商品表示-->
-    </table>
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-8">
+      <h2>新着商品</h2>
+      <table>
+      <!--商品表示-->
+      </table>
   
-    <a href="#">全ての商品を見る ></a>
+      <a href="#" class="text-right">全ての商品を見る ></a>
+    </div>
   </div>
 </div>
