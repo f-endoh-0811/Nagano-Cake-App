@@ -11,9 +11,13 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   
+  namespace :admin do
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :items, only: [:index, :new, :show, :edit, :create, :update]
+  end
+  
   scope module: :admin do
     get 'admin' => 'homes#top', as: 'admin'
-    resources :genres, only: [:index, :edit, :create, :update]
   end
   
   scope module: :public do
@@ -25,6 +29,8 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/hide' => 'customers#hide'
+    # item用のルーティング
+    resources :items, only: [:index, :show]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
