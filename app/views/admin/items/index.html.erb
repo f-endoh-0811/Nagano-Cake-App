@@ -12,7 +12,7 @@
           <tr>
             <th>商品ID</th>
             <th>商品名</th>
-            <th>税抜き価格</th>
+            <th>税抜価格</th>
             <th>ジャンル</th>
             <th>ステータス</th>
           </tr>
@@ -24,21 +24,22 @@
               <%= item.id %>
             </td>
             <td>
-              <%= item.name %>
+              <%= link_to item.name, admin_item_path(item.id) %>
             </td>
             <td>
               <%= item.price %>
             </td>
             <td>
-              <%= item.genre_id.name %>
+              <%= item.genre_id %>
             </td>
             <td>
-              <%= item.status %>
+              <%= item.status ? '販売中' : '販売停止中' %>
             </td>
           </tr>
         </tbody>
         <% end %>
       </table>
+      <%= paginate @items %>
     </div>
   </div>
 </div>
