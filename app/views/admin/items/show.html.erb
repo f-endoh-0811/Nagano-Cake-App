@@ -7,7 +7,7 @@
   
   <div class="row">
     <div class="col">
-      <%= image_tag @item.image %>
+      <%= image_tag @item.get_image(400, 380) %>
     </div>
     <div class="col">
       <table>
@@ -26,13 +26,13 @@
         <tr>
           <th>ジャンル</th>
           <td>
-            <%= @item.genre_id %>
+            <%= @genre.name %>
           </td>
         </tr>
         <tr>
           <th>税込価格<br><span>(税抜き価格)</span></th>
           <td>
-            <%= @item.price %>
+            <%= @item.price %><span>（<%= (@item.price * 0.8).ceil %>）円</span>
           </td>
         </tr>
         <tr>
