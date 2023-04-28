@@ -1,2 +1,23 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <%= image_tag @item.get_image(300, 280) %>
+    </div>
+    <div class="col-lg-6">
+      <div>
+        <h5>
+          <%= @item.name %>
+        </h5>
+        <p>
+          <%= @item.introduction %>
+        </p>
+        <h6>
+          ¥ <%= @item.price %><span> (税込)</span> 
+        </h6>
+        <!--カートに入れるためのform_withメソッドを記述-->
+        <!--form.number_field-->
+        <!--カートに入れる-->
+      </div>
+    </div>
+  </div>
+</div>
