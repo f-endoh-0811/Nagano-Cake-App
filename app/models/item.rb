@@ -6,6 +6,6 @@ class Item < ApplicationRecord
   has_many :order_details
   
   def get_image(width, height)
-    image.variant(resize_to_limit: [width, height]).processed
+    image.variant(resize_to_fill: [width, height]).processed
   end
 end

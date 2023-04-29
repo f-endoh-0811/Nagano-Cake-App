@@ -11,7 +11,7 @@
     <% @items.each do |image| %>
     <div class="col-lg-3">
       <a href="/items/<%= image.id %>" class="card lg-3 text-dark border-0">
-        <%= image_tag image.get_image(200, 180), class: "card-img-top" %>
+        <%= image_tag image.get_image(200, 150), class: "card-img-top" %>
         <div class="card-body">
           <h6 class="card-title">
             <%= image.name %><br>
