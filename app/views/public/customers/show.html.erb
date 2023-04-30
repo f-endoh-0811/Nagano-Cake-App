@@ -1,10 +1,12 @@
 <h2>マイページ</h2>
 
-<h3>登録情報</h3>
-<%= link_to "編集する", customers_information_edit_path %>
+<h6>
+  登録情報
+  <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success" %>
+</h6>
 
 <div>
-  <table>
+  <table class="table border-dark">
     <tr>
       <th>氏名</th>
       <td>
@@ -37,5 +39,12 @@
   </table>
 </div>
 
-<h3>注文履歴</h3>
-<a href="#">一覧を見る</a>　<!--あとで正しいパスを指定-->
+<h6>
+  配送先
+  <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
+</h6>
+
+<h6>
+  注文履歴
+  <button href="#" class="btn btn-primary">一覧を見る</button>　<!--あとで正しいパスを指定-->
+</h6>

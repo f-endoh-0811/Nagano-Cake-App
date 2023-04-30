@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   #管理者用
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
@@ -30,8 +30,8 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/hide' => 'customers#hide'
-    # item用のルーティング
     resources :items, only: [:index, :show]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
