@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>ショッピングカート</h2>
+    </div>
+    <div class="col">
+      <%= link_to "カートを空にする", root_path, class: "btn btn-danger" %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <th>
+              <!--商品画像-->
+              <%= cart_item.item.name %>
+            </th>
+            <th>
+              <%= cart_item.item.price.with_tax_price %>
+            </th>
+            <th>
+              <!--数量変更-->
+              <!--変更ボタン-->
+            </th>
+            <th>
+              <%= cart_item.subtotal %>
+            </th>
+            <th>
+              <!--削除ボタン-->
+            </th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+    </div>
+    <div class="col">
+      <table>
+        <tr>
+          <th>合計金額</th>
+          <th>
+            <%= %>
+          </th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <%= link_to "情報入力に進む", root_path, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
