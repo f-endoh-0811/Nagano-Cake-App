@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     patch 'customers/hide' => 'customers#hide'
     resources :items, only: [:index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

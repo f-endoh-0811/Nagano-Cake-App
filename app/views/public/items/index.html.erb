@@ -2,20 +2,20 @@
   <div class="row">
     <div class="col">
       <h2>
-        商品一覧 <span style="font-size: 17px;">(全<%= @items.count %>件)</span>
+        商品一覧<span style="font-size: 17px;">(全<%= @items.count %>件)</span>
       </h2>
     </div>
   </div>
   
   <div class="row">
-    <% @items.each do |image| %>
+    <% @items.each do |item| %>
     <div class="col-lg-3">
-      <a href="/items/<%= image.id %>" class="card lg-3 text-dark border-0">
-        <%= image_tag image.get_image(200, 150), class: "card-img-top" %>
+      <a href="/items/<%= item.id %>" class="card lg-3 text-dark border-0">
+        <%= image_tag item.get_image(200, 180), class: "card-img-top" %>
         <div class="card-body">
           <h6 class="card-title">
-            <%= image.name %><br>
-            ¥<%= image.price %>
+            <%= item.name %><br>
+            ¥<%= item.with_tax_price %>
           </h6>
         </div>
       </a>
