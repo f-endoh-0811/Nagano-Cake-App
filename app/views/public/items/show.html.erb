@@ -12,11 +12,13 @@
           <%= @item.introduction %>
         </p>
         <h6>
-          ¥ <%= @item.price %><span> (税込)</span> 
+          ¥ <%= @item.with_tax_price %><span> (税込)</span> 
         </h6>
-        <!--カートに入れるためのform_withメソッドを記述-->
-        <!--form.number_field-->
-        <!--カートに入れる-->
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, *[1..10] %>
+          <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>

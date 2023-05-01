@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-lg-10">
       <h2>ショッピングカート</h2>
     </div>
-    <div class="col">
+    <div class="col-lg-2">
       <%= link_to "カートを空にする", root_path, class: "btn btn-danger" %>
     </div>
   </div>
   
   <div class="row">
-    <div class="col-lg-12">
-      <table>
+    <div class="col-md-12">
+      <table class="table table-bordered border-dark">
         <thead>
           <tr>
             <th>商品名</th>
@@ -24,20 +24,20 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
           <tr>
-            <th>
-              <!--商品画像-->
+            <td>
+              <%= image_tag cart_item.item.get_image(120, 50) %>
               <%= cart_item.item.name %>
-            </th>
-            <th>
-              <%= cart_item.item.price.with_tax_price %>
-            </th>
-            <th>
+            </td>
+            <td>
+              <%= cart_item.item.with_tax_price %>
+            </td>
+            <td>
               <!--数量変更-->
               <!--変更ボタン-->
-            </th>
-            <th>
+            </td>
+            <td>
               <%= cart_item.subtotal %>
-            </th>
+            </td>
             <th>
               <!--削除ボタン-->
             </th>
@@ -49,23 +49,23 @@
   </div>
   
   <div class="row">
-    <div class="col">
+    <div class="col-lg-9">
       <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
     </div>
-    <div class="col">
-      <table>
+    <div class="col-lg-3">
+      <table class="table table-bordered border-dark">
         <tr>
           <th>合計金額</th>
-          <th>
-            <%= %>
-          </th>
+          <td>
+            <%= @total.to_s(:delemited) %>
+          </td>
         </tr>
       </table>
     </div>
   </div>
   
   <div class="row">
-    <div class="col">
+    <div class="col-lg-12 text-center">
       <%= link_to "情報入力に進む", root_path, class: "btn btn-success" %>
     </div>
   </div>
