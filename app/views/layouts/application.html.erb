@@ -12,67 +12,67 @@
 
   <body class="mx-auto" style="width: 95%;">
     <header class="border-dark border mt-lg-3">
-      <nav class="nav navbar-expand-sm navbar-light mt-3 mb-3">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <h1>LOGO</h1>
           
         <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav ml-auto">
           <% if admin_signed_in? %>
             <% if request.fullpath.include? "/admin" %>
-              <li class="nav-item active">
-                <%= link_to "商品一覧", admin_items_path %>
+              <li class="nav-link">
+                <%= link_to "商品一覧", admin_items_path, class: "btn btn-light" %>
               </li>
-              <li>
-                <%= link_to "会員一覧", admin_customers_path %>
+              <li class="nav-link">
+                <%= link_to "会員一覧", admin_customers_path, class: "btn btn-light" %>
               </li>
-              <li>
-                <%= link_to "注文履歴一覧", admin_path %>
+              <li class="nav-link">
+                <%= link_to "注文履歴一覧", admin_path, class: "btn btn-light" %>
               </li>
-              <li>
-                <%= link_to "ジャンル一覧", admin_genres_path %>
+              <li class="nav-link">
+                <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-light" %>
               </li>
-              <li>
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+              <li class="nav-link">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-light" %>
               </li>
             <% else %>
-              <li class="nav-item">
-                <%= link_to "マイページ", customers_path %>
+              <li class="nav-link">
+                <%= link_to "マイページ", customers_path, class: "btn btn-light" %>
               </li>
-              <li>
-                <%= link_to "商品一覧", items_path %>
+              <li class="nav-link">
+                <%= link_to "商品一覧", items_path, class: "btn btn-light" %>
               </li>
-              <li>
-                <%= link_to "カート", cart_items_path %>
+              <li class="nav-link">
+                <%= link_to "カート", cart_items_path, class: "btn btn-light" %>
               </li>
-              <li>
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+              <li class="nav-link">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-light" %>
               </li>
             <% end %>
           <% elsif customer_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "マイページ", customers_path %>
+            <li class="nav-link">
+              <%= link_to "マイページ", customers_path, class: "btn btn-light" %>
             </li>
-            <li>
-              <%= link_to "商品一覧", items_path %>
+            <li class="nav-link">
+              <%= link_to "商品一覧", items_path, class: "btn btn-light" %>
             </li>
-            <li>
-              <%= link_to "カート", cart_items_path %>
+            <li class="nav-link">
+              <%= link_to "カート", cart_items_path, class: "btn btn-light" %>
             </li>
-            <li>
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+            <li class="nav-link">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-light" %>
             </li>
           <% else %>
-            <li>
-              <%= link_to "About", about_path %>
+            <li class="nav-link">
+              <%= link_to "About", about_path, class: "btn btn-light" %>
             </li>
-            <li>
-              <%= link_to "商品一覧", root_path %> <!--各モデル作成後正しいリンクを記述-->
+            <li class="nav-link">
+              <%= link_to "商品一覧", items_path, class: "btn btn-light" %>
             </li>
-            <li>
-              <%= link_to "新規登録", new_customer_registration_path %>
+            <li class="nav-link">
+              <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-light" %>
             </li>
-            <li>
-              <%= link_to "ログイン", new_customer_session_path %>
+            <li class="nav-link">
+              <%= link_to "ログイン", new_customer_session_path, class: "btn btn-light" %>
             </li>
           <% end %>
           </ul>

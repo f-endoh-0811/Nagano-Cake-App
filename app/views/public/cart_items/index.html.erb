@@ -23,27 +23,29 @@
         
         <tbody>
           <% @cart_items.each do |cart_item| %>
-          <tr>
-            <td>
-              <%= image_tag cart_item.item.get_image(120, 50) %>
-              <%= cart_item.item.name %>
-            </td>
-            <td>
-              <%= cart_item.item.with_tax_price %>
-            </td>
-            <%= form_with model: @cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
-            <td>
-              <%= f.number_field :amount, value: cart_item.amount, min: 1, max: 10 %>
-              <%= f.submit "変更", class: "btn btn-success" %>
-            </td>
-            <% end %>
-            <td>
-              <%= cart_item.subtotal %>
-            </td>
-            <th>
-              <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-            </th>
-          </tr>
+            
+            <tr>
+              <td>
+                <%= image_tag cart_item.item.get_image(120, 50) %>
+                <%= cart_item.item.name %>
+              </td>
+              <td>
+                <%= cart_item.item.with_tax_price %>
+              </td>
+              <%= form_with model: @cart_item, url: cart_item_path(cart_item.amount), method: :patch do |f| %>
+              <td>
+                <%= f.select :amount, options_for_select(@cart_items, {selected: cart_item.amount.to_i} ) %>
+                <%= f.submit "変更", class: "btn btn-success" %>
+              </td>
+              <% end %>
+              <td>
+                <%= cart_item.subtotal %>
+              </td>
+              <th>
+                <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+              </th>
+            </tr>
+            
           <% end %>
         </tbody>
       </table>
