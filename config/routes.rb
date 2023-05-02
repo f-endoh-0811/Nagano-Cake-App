@@ -37,9 +37,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     scope :cart_items do
       delete 'destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
-    end  
-    
-    
+    end
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
