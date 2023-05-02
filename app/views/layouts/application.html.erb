@@ -20,7 +20,7 @@
           <% if admin_signed_in? %>
             <% if request.fullpath.include? "/admin" %>
               <li class="nav-item active">
-                <%= link_to "商品一覧", admin_items_path %> <!--各モデル作成後正しいリンクを記述-->
+                <%= link_to "商品一覧", admin_items_path %>
               </li>
               <li>
                 <%= link_to "会員一覧", admin_customers_path %>
@@ -42,7 +42,7 @@
                 <%= link_to "商品一覧", items_path %>
               </li>
               <li>
-                <%= link_to "カート", cart_items_path %> <!--各モデル作成後正しいリンクを記述-->
+                <%= link_to "カート", cart_items_path %>
               </li>
               <li>
                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
@@ -56,7 +56,7 @@
               <%= link_to "商品一覧", items_path %>
             </li>
             <li>
-              <%= link_to "カート", cart_items_path %> <!--各モデル作成後正しいリンクを記述-->
+              <%= link_to "カート", cart_items_path %>
             </li>
             <li>
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>

@@ -25,15 +25,21 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get 'about' => 'homes#about', as: 'about'
     # cuntomer用のルーティング
-    get 'customers' => 'customers#show'
-    get 'customers/information/edit' => 'customers#edit'
-    patch 'customers/information' => 'customers#update'
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
-    patch 'customers/hide' => 'customers#hide'
+    resource :customers, only: [:show]
+    scope :customers do
+      get 'information/edit' => 'customers#edit'
+      patch 'information' => 'customers#update'
+      get 'unsubscribe' => 'customers#unsubscribe'
+      patch 'hide' => 'customers#hide'
+    end
     resources :items, only: [:index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
+    scope :cart_items do
+      delete 'destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
+    end  
+    
+    
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
