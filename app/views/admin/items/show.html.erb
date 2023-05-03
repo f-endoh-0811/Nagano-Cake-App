@@ -32,7 +32,7 @@
         <tr>
           <th>税込価格<br><span>(税抜き価格)</span></th>
           <td>
-            <%= @item.price %><span>（<%= @item.price %>）円</span> <!--あとで税込価格を変更-->
+            <%= @item.with_tax_price.to_s(:delimited) %><span>（<%= @item.price.to_s(:delimited) %>）円</span>
           </td>
         </tr>
         <tr>

@@ -15,7 +15,7 @@
         <div class="card-body">
           <h6 class="card-title">
             <%= item.name %><br>
-            ¥<%= item.with_tax_price %>
+            ¥<%= item.with_tax_price.to_s(:delimited) %>
           </h6>
         </div>
       </a>

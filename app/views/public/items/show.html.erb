@@ -12,7 +12,7 @@
           <%= @item.introduction %>
         </p>
         <h6>
-          ¥ <%= @item.with_tax_price %><span> (税込)</span> 
+          ¥ <%= @item.with_tax_price.to_s(:delimited) %><span> (税込)</span> 
         </h6>
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
