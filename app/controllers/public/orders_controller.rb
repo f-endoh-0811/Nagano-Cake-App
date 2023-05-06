@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
+    @order = Order.new
   end
 
   def index
@@ -8,12 +9,19 @@ class Public::OrdersController < ApplicationController
   def show
   end
   
+  def check
+    @order = Order.new(order_params)
+  end
+  
   def create
   end
   
-  def check
+  def thanks
   end
   
-  def thanks
+  private
+  
+  def order_params
+    params.require(:order).permit()
   end
 end
