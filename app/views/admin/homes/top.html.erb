@@ -14,7 +14,7 @@
   <% else %>
     <div class="row">
       <div class="col-lg-12">
-        <table>
+        <table class="table table-bordered border-dark">
           <thead>
             <tr>
               <th>購入日時</th>
@@ -27,16 +27,17 @@
             <% @orders.each do |order| %>
               <tr>
                 <td>
-                  <%= order.created_at %>
+                  <%= order.created_at %> <!-- 日付の表示方法を変更、注文履歴詳細ページへのリンクを記述 -->
                 </td>
 
                 <td>
-                  <%= order.name %>
+                  <%= order.customer.last_name %><!--
+               --><%= order.customer.first_name %>
                 </td>
 
                 <td>
 
-                  <%= order.total_amount %>
+                  <%= order.total_amount_method %>
                 </td>
               </tr>
             <% end %>
@@ -47,7 +48,7 @@
 
     <div class="row mt">
       <div class="col-lg-12 text-center">
-        <%#= paginate @orders %>
+        <%= paginate @orders %>
       </div>
     </div>
   <% end %>

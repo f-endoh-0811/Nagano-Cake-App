@@ -10,7 +10,8 @@ class Order < ApplicationRecord
     800
   end
   
-  def total_amount
+  # 注文個数
+  def total_amount_method
     total_amount = 0
     order_details.each do |order_detail|
       total_amount += order_detail.amount

@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @billing_amount = @total + @order.postage
+    @billing_amount = @total + @order.postage #請求金額を算出
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -38,7 +38,7 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     cart_items = current_customer.cart_items.all
     if @order.save
-      cart_items.each do |cart_item|
+      cart_items.each do |cart_item| #カート内の商品データをOrderDetailモデルに送る
         order_detail = OrderDetail.new
         order_detail.order_id = @order.id
         order_detail.item_id = cart_item.item_id
