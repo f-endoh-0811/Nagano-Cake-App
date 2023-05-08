@@ -5,11 +5,17 @@ class Order < ApplicationRecord
   
   enum payment_method: { credit_card: 0, transfer: 1 }
   
+  # 送料
   def postage
     800
   end
   
-  def billing_amount
-    cart_item.subtotal + postage
+  def total_amount
+    total_amount = 0
+    order_details.each do |order_detail|
+      total_amount += order_detail.amount
+    end
+    return total_amount
   end
+  
 end

@@ -4,7 +4,7 @@
       <h2>注文履歴一覧</h2>
     </div>
   </div>
-  
+
   <% if @orders.count == 0 %>
     <div class="row mt-5">
       <div class="col-lg-12 text-center">
@@ -22,20 +22,21 @@
               <th>注文個数</th>
             </tr>
           </thead>
-          
+
           <tbody>
             <% @orders.each do |order| %>
               <tr>
                 <td>
                   <%= order.created_at %>
                 </td>
-                
+
                 <td>
                   <%= order.name %>
                 </td>
-                
+
                 <td>
-                  <%= order.order_details.amount %>
+
+                  <%= order.total_amount %>
                 </td>
               </tr>
             <% end %>
@@ -43,10 +44,10 @@
         </table>
       </div>
     </div>
-    
+
     <div class="row mt">
       <div class="col-lg-12 text-center">
-        <%= paginate @orders %>
+        <%#= paginate @orders %>
       </div>
     </div>
   <% end %>

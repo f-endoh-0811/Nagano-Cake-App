@@ -7,8 +7,8 @@
   
   <%= form_with model: @order, url: orders_path, method: :post do |f| %>
     <div class="row">
-      <div class="col-lg-8">
-        <table>
+      <div class="col-lg-9">
+        <table class="table table-bordered border-dark">
           <thead>
             <tr>
               <th>商品名</th>
@@ -43,12 +43,12 @@
         </table>
       </div>
       
-      <div class="col-lg-4">
-        <table>
+      <div class="col-lg-3">
+        <table class="table table-bordered border-dark">
           <tr>
             <th>送料</th>
             <td>
-              <%= @order_find.postage %>
+              <%= @order.postage.to_s %>
             </td>
           </tr>
         
@@ -62,17 +62,41 @@
           <tr>
             <th>請求金額</th>
             <td>
-              <%= @order_find.billing_amount.to_s(:delimited) %>
+              <%= @billing_amount.to_s(:delimited) %>
             </td>
           </tr>
         </table>
       </div>
     </div>
+    
+    <div class="row">
+      <div class="col-lg-5">
+        <table class="table table-borderless">
+          <tr>
+            <th>支払方法</th>
+            <td>
+              <%= @order.payment_method_i18n %>
+            </td>
+          </tr>
+          <tr>
+            <th>お届け先</th>
+            <td>
+              〒<%= @order.postal_code %>
+              <%= @order.address %><br>
+              <%= @order.name %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
     <div>
-      <%= f.hidden_field :postal_code %>
-      <%= f.hidden_field :address %>
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :billing_amount %>
+      <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+      <%= f.hidden_field :address, :value => @order.address %>
+      <%= f.hidden_field :name, :value => @order.name %>
+      <%= f.hidden_field :postage, :value => @order.postage %>
+      <%= f.hidden_field :billing_amount, :value => @billing_amount %>
+      <%= f.hidden_field :payment_method, :value => @order.payment_method %>
       <%= f.submit "注文を確定する", class:"btn btn-success" %>
     </div>
   <% end %>

@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @addresses = current_customer.addresses
+    @addresses = current_customer.addresses.all
   end
 
   def index
@@ -11,10 +11,11 @@ class Public::OrdersController < ApplicationController
   end
   
   def check
-    @order_find = Order.find(params[:id])
     @order = Order.new(order_params)
-    @cart_items = current_customer.cart_items
+    @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @billing_amount = @total + @order.postage
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -35,7 +36,7 @@ class Public::OrdersController < ApplicationController
   
   def create
     @order = current_customer.orders.new(order_params)
-    cart_items = current_customer.cart_items
+    cart_items = current_customer.cart_items.all
     if @order.save
       cart_items.each do |cart_item|
         order_detail = OrderDetail.new
@@ -44,11 +45,10 @@ class Public::OrdersController < ApplicationController
         order_detail.price = cart_item.item.with_tax_price
         order_detail.amount = cart_item.amount
         order_detail.save
+        cart_items.destroy_all
       end
       redirect_to thanks_orders_path
-      cart_items.destroy_all
     else
-      @order = Order.new(order_params)
       render :new
     end
   end
