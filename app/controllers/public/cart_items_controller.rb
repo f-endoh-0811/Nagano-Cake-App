@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   
   def index
-    @cart_items = current_customer.cart_items
+    @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @numbers = 1..10
   end
@@ -33,7 +33,7 @@ class Public::CartItemsController < ApplicationController
   end
   
   def destroy_all
-    cart_items = current_customer.cart_items
+    cart_items = current_customer.cart_items.all
     cart_items.destroy_all
     redirect_to cart_items_path
   end
