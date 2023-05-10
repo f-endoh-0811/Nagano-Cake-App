@@ -5,6 +5,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders.all
+    @order_details = OrderDetail.all # order_idに紐づくデータを取れるように変更
   end
 
   def show
