@@ -6,12 +6,15 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
-    @order_details = OrderDetail.all # order_idに紐づくデータを取れるように変更
+    @order_details = OrderDetail.all
   end
 
   def show
+    @order = current_customer.orders.find(params[:id])
+    @order_details = @order.order_details.all
+    @total = @order.billing_amount - @order.postage # 商品合計金額
   end
-  
+
   def check
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
@@ -35,7 +38,7 @@ class Public::OrdersController < ApplicationController
       render :new
     end
   end
-  
+
   def create
     @order = current_customer.orders.new(order_params)
     cart_items = current_customer.cart_items.all
@@ -54,16 +57,16 @@ class Public::OrdersController < ApplicationController
       render :new
     end
   end
-  
+
   def thanks
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :postage, :billing_amount)
   end
-  
+
   def address_params
     params.require(:order).permit(:postal_code, :address, :name)
   end
