@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-8 mb-3">
       <h2>
         <%= @customer.last_name %><!--
      --><%= @customer.first_name %><!--
@@ -18,7 +18,7 @@
             <%= @customer.id %>
           </td>
         </tr>
-        
+
         <tr>
           <th>氏名</th>
           <td>
@@ -26,7 +26,7 @@
          --><%= f.text_field :first_name %>
           </td>
         </tr>
-        
+
         <tr>
           <th>フリガナ</th>
           <td>
@@ -34,45 +34,45 @@
          --><%= f.text_field :first_name_kana %>
           </td>
         </tr>
-        
+
         <tr>
           <th>郵便番号</th>
           <td>
             <%= f.text_field :postal_code %>
           </td>
         </tr>
-        
+
         <tr>
           <th>住所</th>
           <td>
             <%= f.text_field :address, size: "60%" %>
           </td>
         </tr>
-        
+
         <tr>
           <th>電話番号</th>
           <td>
             <%= f.text_field :telephone_number %>
           </td>
         </tr>
-        
+
         <tr>
           <th>メールアドレス</th>
           <td>
             <%= f.text_field :email %>
           </td>
         </tr>
-        
+
         <tr>
           <th>会員ステータス</th>
           <td>
-            <%= f.radio_button :is_deleted, false, :checked => params[:is_deleted] == false %>
+            <%= f.radio_button :is_deleted, false %>
             <%= f.label :is_deleted, "有効" %>
-            <%= f.radio_button :is_deleted, true, :checked => params[:is_deleted] == true %>
+            <%= f.radio_button :is_deleted, true %>
             <%= f.label :is_deleted, "退会" %>
           </td>
         </tr>
-        
+
         <tr>
           <th></th>
           <td>
