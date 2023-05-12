@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-3 mb-3">
       <h2>商品編集</h2>
     </div>
   </div>
   
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-6 mx-auto">
       <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
       <table class="table table-borderless">
         <tr>
@@ -47,14 +47,14 @@
         <tr>
           <th>販売ステータス</th>
           <td>
-            <%= f.radio_button :status, "TRUE" %>
+            <%= f.radio_button :status, true %>
             <%= f.label :status, "販売中" %>
-            <%= f.radio_button :status, "FALSE" %>
+            <%= f.radio_button :status, false %>
             <%= f.label :status, "売切れ" %>
           </td>
         </tr>
       </table>
-        <div class="button">
+        <div class="text-center">
           <%= f.submit "変更を保存", class: "btn btn-success" %>
         </div>
       <% end %>
