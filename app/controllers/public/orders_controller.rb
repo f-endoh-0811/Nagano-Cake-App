@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @billing_amount = @total + @order.postage #請求金額を算出
+    @billing_amount = @total + @order.postage # 請求金額を算出
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address

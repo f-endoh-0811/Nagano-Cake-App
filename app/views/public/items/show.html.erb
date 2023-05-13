@@ -1,9 +1,28 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-6">
-      <%= image_tag @item.get_image(350, 230) %>
+    <div class="col-lg-2 mr-lg-5">
+      <table class="table table-sm table-borderless border-dark border">
+        <thead class="text-center border-dark border-bottom">
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+        </thead>
+        <% @genres.each do |genre| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= genre.name %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
     </div>
-    <div class="col-lg-6">
+    
+    <div class="col-lg-4">
+      <%= image_tag @item.get_image(300, 200) %>
+    </div>
+    <div class="col-lg-5">
       <div>
         <h4>
           <%= @item.name %>
@@ -16,8 +35,8 @@
         </h6>
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.select :amount, *[1..10] %>
-          <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+          <%= f.select :amount, *[1..10],:prompt => "個数選択" %>
+          <%= f.submit "カートに入れる", class: "btn btn-success ml-5" %>
         <% end %>
       </div>
     </div>
