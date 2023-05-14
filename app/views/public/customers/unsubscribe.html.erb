@@ -11,7 +11,7 @@
 
       <%= form_with model: @customer, url: hide_path, method: :patch do |f| %>
         <%= link_to "退会しない", customers_path, class: "btn btn-primary" %>
-        <%= f.submit "退会する", class: "btn btn-danger ml-3" %>
+        <%= f.submit "退会する", class: "btn btn-danger ml-3", "data-confirm" => "本当に退会しますか？" %>
       <% end %>
     </div>
   </div>
