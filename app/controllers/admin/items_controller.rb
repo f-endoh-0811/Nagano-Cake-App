@@ -30,6 +30,11 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_item_path(item.id)
   end
   
+  # 検索窓
+  def search
+    @items = Item.search(params[:keyword]).order(created_at: :desc)
+  end
+  
   private
   
   def item_params

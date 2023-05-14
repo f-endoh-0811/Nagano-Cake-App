@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, only: [:index, :new, :show, :edit, :create, :update]
+    resources :items, only: [:index, :new, :show, :edit, :create, :update] do
+      collection do
+        get 'search'
+      end
+    end
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show]
   end
@@ -35,7 +39,11 @@ Rails.application.routes.draw do
       get 'unsubscribe' => 'customers#unsubscribe'
       patch 'hide' => 'customers#hide'
     end
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      collection do
+        get 'search'
+      end
+    end
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do

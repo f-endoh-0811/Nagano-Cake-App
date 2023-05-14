@@ -11,8 +11,8 @@
   </head>
 
   <body class="mx-auto" style="width: 95%;">
-    <header class="border-dark border mt-lg-3" style="height: 130px;">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 128px;">
+    <header class="border-dark border mt-lg-3">
+      <nav class="navbar navbar-expand-lg">
         <h1 class="border border-dark p-2"><%= link_to "LOGO", root_path, class: "text-dark" %></h1>
 
         <div class="collapse navbar-collapse">
@@ -20,51 +20,58 @@
 
           <% if admin_signed_in? %>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "商品一覧", admin_items_path, class: "btn btn-light" %>
+              <%= link_to "商品一覧", admin_items_path, class: "btn btn-white" %>
             </li>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "会員一覧", admin_customers_path, class: "btn btn-light" %>
+              <%= link_to "会員一覧", admin_customers_path, class: "btn btn-white" %>
             </li>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "注文履歴一覧", admin_path, class: "btn btn-light" %>
+              <%= link_to "注文履歴一覧", admin_path, class: "btn btn-white" %>
             </li>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-light" %>
+              <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-white" %>
             </li>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-light" %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-white" %>
             </li>
           <% elsif customer_signed_in? %>
             <p class="mr-5">ようこそ、<%= current_customer.last_name %>さん！</p>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "マイページ", customers_path, class: "btn btn-light" %>
+              <%= link_to "マイページ", customers_path, class: "btn btn-white" %>
             </li>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "商品一覧", items_path, class: "btn btn-light" %>
+              <%= link_to "商品一覧", items_path, class: "btn btn-white" %>
             </li>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "カート", cart_items_path, class: "btn btn-light" %>
+              <%= link_to "カート", cart_items_path, class: "btn btn-white" %>
             </li>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-light" %>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-white" %>
             </li>
           <% else %>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "About", about_path, class: "btn btn-light" %>
+              <%= link_to "About", about_path, class: "btn btn-white" %>
             </li>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "商品一覧", items_path, class: "btn btn-light" %>
+              <%= link_to "商品一覧", items_path, class: "btn btn-white" %>
             </li>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-light" %>
+              <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-white" %>
             </li>
             <li class="nav-link border border-dark ml-4">
-              <%= link_to "ログイン", new_customer_session_path, class: "btn btn-light" %>
+              <%= link_to "ログイン", new_customer_session_path, class: "btn btn-white" %>
             </li>
           <% end %>
           </ul>
         </div>
       </nav>
+
+      <div class="text-right mb-3 mr-3">
+        <%= form_tag(search_items_path, :method => 'get') do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag 'Search', :name => nil %>
+        <% end %>
+      </div>
     </header>
 
     <main class="border-dark border-right border-left py-lg-5">

@@ -1,10 +1,10 @@
 class Item < ApplicationRecord
-  
+
   has_one_attached :image
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
   has_many :order_details
-  
+
 def get_image(width, height)
   unless image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -12,7 +12,16 @@ def get_image(width, height)
   end
   image.variant(resize_to_fill: [width, height]).processed
 end
-  
+
+# 検索窓
+def self.search(search)
+  if search != ""
+    Item.where('name LIKE(?)', "%#{search}%")
+  else
+    Item.all
+  end
+end
+
   # 消費税を求めるメソッド
   def with_tax_price
     (price * 1.1).floor

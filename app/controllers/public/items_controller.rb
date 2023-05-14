@@ -9,4 +9,9 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
     @genres = Genre.all
   end
+  
+  # 検索窓
+  def search
+    @items = Item.search(params[:keyword]).order(created_at: :desc)
+  end
 end
