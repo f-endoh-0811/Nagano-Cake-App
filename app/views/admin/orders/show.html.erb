@@ -64,7 +64,7 @@
               </td>
 
               <td>
-                <%= order_detail.price %>
+                <%= order_detail.price.to_s(:delimited) %>
               </td>
 
               <td>
@@ -72,7 +72,7 @@
               </td>
 
               <td>
-                <%= order_detail.subtotal %>
+                <%= order_detail.subtotal.to_s(:delimited) %>
               </td>
             </tr>
           <% end %>
@@ -87,7 +87,7 @@
         <tr>
           <th>商品合計</th>
           <td>
-            <%= @total %>円
+            <%= @total.to_s(:delimited) %>円
           </td>
         </tr>
 
@@ -101,7 +101,7 @@
         <tr>
           <th>請求金額合計</th>
           <td>
-            <%= @order.billing_amount %>円
+            <%= @order.billing_amount.to_s(:delimited) %>円
           </td>
         </tr>
       </table>
