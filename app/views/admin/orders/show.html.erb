@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 mb-3">
+      <h3>注文履歴詳細</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-10">
+      <table class="table table-borderless">
+        <tr>
+          <th>購入者</th>
+          <td>
+            <a href="/admin/customers/<%= @order.customer_id %>" class="text-dark" style="text-decoration: underline;">
+              <%= @order.customer.last_name %>
+              <%= @order.customer.first_name %>
+            </a>
+          </td>
+        </tr>
+
+        <tr>
+          <th>注文日</th>
+          <td>
+            <%= l @order.created_at, format: :short %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>配送先</th>
+          <td>
+            〒<%= @order.postal_code %>
+            <%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>支払方法</th>
+          <td>
+            <%= @order.payment_method_i18n %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-7">
+      <table class="table table-borderless border-top">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+            <tr>
+              <td>
+                <%= order_detail.item.name %>
+              </td>
+
+              <td>
+                <%= order_detail.price.to_s(:delimited) %>
+              </td>
+
+              <td>
+                <%= order_detail.amount %>
+              </td>
+
+              <td>
+                <%= order_detail.subtotal.to_s(:delimited) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-3 mt-5">
+      <table class="table table-borderless">
+        <tr>
+          <th>商品合計</th>
+          <td>
+            <%= @total.to_s(:delimited) %>円
+          </td>
+        </tr>
+
+        <tr>
+          <th>送料</th>
+          <td>
+            <%= @order.postage %>円
+          </td>
+        </tr>
+
+        <tr>
+          <th>請求金額合計</th>
+          <td>
+            <%= @order.billing_amount.to_s(:delimited) %>円
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

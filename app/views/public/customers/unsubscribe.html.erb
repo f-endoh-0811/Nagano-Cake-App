@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <h4 class="mb-5 font-weight-bold">本当に退会しますか？</h4>
+
+      <p class="mb-5">
+        退会すると、会員登録情報や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+
+      <%= form_with model: @customer, url: hide_path, method: :patch do |f| %>
+        <%= link_to "退会しない", customers_path, class: "btn btn-primary" %>
+        <%= f.submit "退会する", class: "btn btn-danger ml-3", "data-confirm" => "本当に退会しますか？" %>
+      <% end %>
+    </div>
+  </div>
+</div>
